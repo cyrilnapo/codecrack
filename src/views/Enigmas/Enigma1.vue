@@ -8,4 +8,4 @@
 
 <style scoped>
 
-</style></template>
+</style>
