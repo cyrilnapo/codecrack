@@ -31,7 +31,7 @@ const motionGlowText = {
 
 function startGame() {
     if (userName.value) {
-        router.push('/menu');
+        router.push({ path: '/menu', query: { userName: userName.value } });
     } else {
         alert('Veuillez entrer votre nom.');
     }
