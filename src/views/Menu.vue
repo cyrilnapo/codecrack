@@ -3,7 +3,7 @@
         <h1 v-motion-slide-top class="title">Choisissez une énigme <span v-motion="motionGlowText"
                 class="exclamation">{{ userName }} !</span></h1>
         <div v-motion-slide-bottom class="sections">
-            <div class="section" v-for="defi in defis" :key="defi">
+            <div class="section" v-for="(defi, index) in defis" :key="defi" @click="goToEnigma(index + 1)">
                 {{ defi }}
             </div>
         </div>
@@ -48,6 +48,9 @@ export default {
     methods: {
         goHome() {
             this.$router.push('/');
+        },
+        goToEnigma(enigmaNumber) {
+            this.$router.push(`/enigma${enigmaNumber}`);
         }
     }
 };

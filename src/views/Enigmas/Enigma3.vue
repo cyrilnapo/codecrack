@@ -1,5 +1,5 @@
 <template>
-    <h1>Enigma 1</h1>
+    <h1>Enigma 3</h1>
 </template>
 
 <script>

@@ -11,6 +11,10 @@ const routes = [
   { path: '/', component: Home },
   { path: '/menu', component: Menu },
   { path: '/enigma1', component: Enigma1 },
+  { path: '/enigma2', component: Enigma2 },
+  { path: '/enigma3', component: Enigma3 },
+  { path: '/enigma4', component: Enigma4 },
+  { path: '/enigma5', component: Enigma5 },
 ];
 
 const router = createRouter({
