@@ -2,7 +2,7 @@
     <div v-motion-slide-bottom class="home-page">
         <div class="container">
             <h1 class="title">Bienvenue dans CrackCode <span v-motion="motionGlowText" class="exclamation">!</span></h1>
-            <input v-model="userName" type="input" placeholder="Entrez votre nom..." class="input" /><br>
+            <input id="userNameInput" v-model="userName" type="input" placeholder="Entrez votre nom..." class="input" /><br>
             <button class="continueBtn" @click="startGame">Continuer</button>
         </div>
     </div>
@@ -10,7 +10,7 @@
 
 <script setup>
 import { useRouter } from 'vue-router';
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
 const router = useRouter();
 const userName = ref('');
@@ -36,6 +36,14 @@ function startGame() {
         alert('Veuillez entrer votre nom.');
     }
 }
+
+onMounted(() => {
+  document.getElementById('userNameInput').addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') {
+      startGame();
+    }
+  });
+});
 </script>
 
 <style scoped>
