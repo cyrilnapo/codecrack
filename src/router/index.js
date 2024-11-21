@@ -6,6 +6,11 @@ import TheoEnigma2 from '../views/Enigmas/Theory/TheoEnigma2.vue';
 import TheoEnigma3 from '../views/Enigmas/Theory/TheoEnigma3.vue';
 import TheoEnigma4 from '../views/Enigmas/Theory/TheoEnigma4.vue';
 import TheoEnigma5 from '../views/Enigmas/Theory/TheoEnigma5.vue';
+import Enigma1 from '../views/Enigmas/enigma1.vue';
+import Enigma2 from '../views/Enigmas/enigma2.vue';
+import Enigma3 from '../views/Enigmas/enigma3.vue';
+import Enigma4 from '../views/Enigmas/enigma4.vue';
+import Enigma5 from '../views/Enigmas/enigma5.vue';
 
 const routes = [
   { path: '/', component: Home },
@@ -15,6 +20,11 @@ const routes = [
   { path: '/theoryEnigma3', component: TheoEnigma3 },
   { path: '/theoryEnigma4', component: TheoEnigma4 },
   { path: '/theoryEnigma5', component: TheoEnigma5 },
+  { path: '/enigma1', component: Enigma1 },
+  { path: '/enigma2', component: Enigma2 },
+  { path: '/enigma3', component: Enigma3 },
+  { path: '/enigma4', component: Enigma4 },
+  { path: '/enigma5', component: Enigma5 },
 ];
 
 const router = createRouter({
