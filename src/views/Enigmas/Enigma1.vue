@@ -1,9 +1,10 @@
 <template>
     <div class="container">
-        <div class="intro">
+        <div class="intro" v-motion-slide-top>
             <h1>🕵️‍♂️ Mission d'espionnage : Déchiffrez le message ! 🔐</h1>
             <p>
-                Un espion a laissé un message codé 📨. Déchiffrez-le en utilisant la clé 🔑 : <span style="color:#007bff ; font-size: 35px">+4</span>.
+                Un espion a laissé un message codé 📨. Déchiffrez-le en utilisant la clé 🔑 : <span
+                    style="color:#007bff ; font-size: 35px">+4</span>.
             </p>
             <p>
                 Modifiez les lettres ci-dessous avec les flèches ↑ et ↓ pour révéler le message original ! 😎
@@ -12,7 +13,8 @@
 
         <form>
             <div class="input-group">
-                <div v-motion-slide-left v-for="(input, index) in inputs.slice(0, greeting.length)" :key="index" class="input-wrapper greeting">
+                <div v-motion-slide-left v-for="(input, index) in inputs.slice(0, greeting.length)" :key="index"
+                    class="input-wrapper greeting">
                     <button type="button" class="arrow up" @click="changeLetter(index, 1)">
                         ↑
                     </button>
@@ -22,19 +24,25 @@
                         ↓
                     </button>
                 </div>
-                
+
                 <div class="space"></div>
 
-                <div v-motion-slide-right v-for="(input, index) in inputs.slice(greeting.length)" :key="index + greeting.length" class="input-wrapper crypted">
+                <div v-motion-slide-right v-for="(input, index) in inputs.slice(greeting.length)"
+                    :key="index + greeting.length" class="input-wrapper crypted">
                     <button type="button" class="arrow up" @click="changeLetter(index + greeting.length, 1)">
                         ↑
                     </button>
-                    <input type="text" :maxlength="1" v-model="inputs[index + greeting.length]" @input="moveFocus(index + greeting.length)"
+                    <input type="text" :maxlength="1" v-model="inputs[index + greeting.length]"
+                        @input="moveFocus(index + greeting.length)"
                         :ref="el => inputRefs[index + greeting.length] = el" />
                     <button type="button" class="arrow down" @click="changeLetter(index + greeting.length, -1)">
                         ↓
                     </button>
                 </div>
+            </div>
+            <div style="text-align: center;" v-motion-slide-bottom>
+                <button @click="goHome" class="home-button">
+                    < Retour</button>
             </div>
         </form>
     </div>
@@ -42,54 +50,63 @@
 
 <script setup>
 import { ref, nextTick } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
 
 const userName = ref(localStorage.getItem('userName') || 'User');
 const greeting = 'FVEZS';
 
 const caesarCipher = (text, shift = 4) => {
-  const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  return text
-    .toUpperCase()
-    .split('')
-    .map((char) => {
-      if (alphabet.includes(char)) {
-        let newIndex = (alphabet.indexOf(char) + shift) % alphabet.length;
-        return alphabet[newIndex];
-      }
-      return char;
-    })
-    .join('');
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    return text
+        .toUpperCase()
+        .split('')
+        .map((char) => {
+            if (alphabet.includes(char)) {
+                let newIndex = (alphabet.indexOf(char) + shift) % alphabet.length;
+                return alphabet[newIndex];
+            }
+            return char;
+        })
+        .join('');
 };
 
 const cryptedUserName = ref(caesarCipher(userName.value, 4));
 
 const inputs = ref(
-  [...greeting.split(''), ...cryptedUserName.value.split('').map(letter => letter.toUpperCase())]
+    [...greeting.split(''), ...cryptedUserName.value.split('').map(letter => letter.toUpperCase())]
 );
 
 const inputRefs = ref([]);
 
 const moveFocus = (index) => {
-  if (inputs.value[index].length === 1 && index < inputs.value.length - 1) {
-    nextTick(() => {
-      const nextInput = inputRefs.value[index + 1];
-      if (nextInput) nextInput.focus();
-    });
-  }
+    if (inputs.value[index].length === 1 && index < inputs.value.length - 1) {
+        nextTick(() => {
+            const nextInput = inputRefs.value[index + 1];
+            if (nextInput) nextInput.focus();
+        });
+    }
 };
 
 const changeLetter = (index, direction) => {
-  const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  const currentLetter = inputs.value[index].toUpperCase();
-  const currentIndex = alphabet.indexOf(currentLetter);
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const currentLetter = inputs.value[index].toUpperCase();
+    const currentIndex = alphabet.indexOf(currentLetter);
 
-  if (currentIndex !== -1) {
-    let newIndex = currentIndex + direction;
-    if (newIndex < 0) newIndex = alphabet.length - 1;
-    if (newIndex >= alphabet.length) newIndex = 0;
+    if (currentIndex !== -1) {
+        let newIndex = currentIndex + direction;
+        if (newIndex < 0) newIndex = alphabet.length - 1;
+        if (newIndex >= alphabet.length) newIndex = 0;
 
-    inputs.value[index] = alphabet[newIndex];
-  }
+        inputs.value[index] = alphabet[newIndex];
+    }
+};
+
+
+const goHome = () => {
+    router.push('/theoryEnigma1');
 };
 </script>
 
@@ -131,9 +148,9 @@ const changeLetter = (index, direction) => {
 
 .input-wrapper input {
     width: 60px;
-    height: 60px; 
+    height: 60px;
     text-align: center;
-    font-size: 24px; 
+    font-size: 24px;
     margin: 8px;
     border: 3px solid #ccc;
     border-radius: 8px;
@@ -153,14 +170,39 @@ input:focus {
     font-size: 30px;
     cursor: pointer;
     margin: 5px;
+    transition: transform 0.1s ease;
 }
 
 .arrow:focus {
     outline: none;
 }
 
-.space {
-    width: 60px;  
+.arrow:hover {
+    transform: scale(1.2);
 }
 
+.arrow:active {
+    transform: translateY(3px);
+}
+
+.space {
+    width: 60px;
+}
+
+.home-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #dddddd;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    margin: 25px;
+}
+
+.home-button:hover {
+    background-color: #cecece;
+    transform: scale(0.95);
+}
 </style>
