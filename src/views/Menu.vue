@@ -37,7 +37,7 @@ export default {
     name: 'Menu',
     setup() {
         const route = useRoute();
-        const userName = ref(route.query.userName || '');
+        const userName = ref(localStorage.getItem('userName') || '');
 
         return {
             userName,

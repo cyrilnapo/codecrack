@@ -32,6 +32,7 @@ const motionGlowText = {
 
 function startGame() {
     if (userName.value) {
+        localStorage.setItem('userName', userName.value);
         router.push({ path: '/menu', query: { userName: userName.value } });
     } else {
         alert('Veuillez entrer votre nom.');
@@ -39,6 +40,11 @@ function startGame() {
 }
 
 onMounted(() => {
+    const storedName = localStorage.getItem('userName');
+    if (storedName) {
+        userName.value = storedName;
+    }
+
     document.getElementById('userNameInput').addEventListener('keyup', (event) => {
         if (event.key === 'Enter') {
             startGame();
