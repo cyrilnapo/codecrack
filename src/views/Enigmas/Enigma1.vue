@@ -3,7 +3,7 @@
         <div class="intro">
             <h1>🕵️‍♂️ Mission d'espionnage : Déchiffrez le message ! 🔐</h1>
             <p>
-                Un espion a laissé un message codé 📨. Déchiffrez-le en utilisant la clé 🔑 : <span style="color:#007bff ; font-size: 35px">+3</span>.
+                Un espion a laissé un message codé 📨. Déchiffrez-le en utilisant la clé 🔑 : <span style="color:#007bff ; font-size: 35px">+4</span>.
             </p>
             <p>
                 Modifiez les lettres ci-dessous avec les flèches ↑ et ↓ pour révéler le message original ! 😎
@@ -44,9 +44,9 @@
 import { ref, nextTick } from 'vue';
 
 const userName = ref(localStorage.getItem('userName') || 'User');
-const greeting = 'EUDYR';
+const greeting = 'FVEZS';
 
-const caesarCipher = (text, shift = 3) => {
+const caesarCipher = (text, shift = 4) => {
   const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   return text
     .toUpperCase()
@@ -61,7 +61,7 @@ const caesarCipher = (text, shift = 3) => {
     .join('');
 };
 
-const cryptedUserName = ref(caesarCipher(userName.value, 3));
+const cryptedUserName = ref(caesarCipher(userName.value, 4));
 
 const inputs = ref(
   [...greeting.split(''), ...cryptedUserName.value.split('').map(letter => letter.toUpperCase())]
