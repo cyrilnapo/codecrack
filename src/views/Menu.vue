@@ -50,7 +50,7 @@ export default {
             this.$router.push('/');
         },
         goToEnigma(enigmaNumber) {
-            this.$router.push(`/enigma${enigmaNumber}`);
+            this.$router.push(`/theoryEnigma${enigmaNumber}`);
         }
     }
 };
@@ -101,6 +101,11 @@ export default {
 .section:hover {
     background-color: #0056b3;
     transform: scale(1.05);
+}
+
+.section:active {
+    background-color: #004085;
+    transform: translateY(0);
 }
 
 .home-button {
