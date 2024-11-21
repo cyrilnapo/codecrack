@@ -33,7 +33,7 @@ export default {
     name: "Theorie",
     methods: {
         goToEnigma() {
-            this.$router.push("/enigme");
+            this.$router.push("/enigma1");
         },
         goHome() {
             this.$router.push('/menu');
