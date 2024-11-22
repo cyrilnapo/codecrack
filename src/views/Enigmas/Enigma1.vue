@@ -4,7 +4,7 @@
             <h1>🕵️‍♂️ Mission d'espionnage : Déchiffrez le message ! 🔐</h1>
             <p>
                 Un espion a laissé un message codé 📨. Déchiffrez-le en utilisant la clé 🔑 : <span
-                    style="color:#007bff ; font-size: 35px">+4</span>.
+                    style="color:#007bff ; font-size: 35px">+3</span>.
             </p>
             <p>
                 Modifiez les lettres ci-dessous avec les flèches ↑ et ↓ pour révéler le message original ! 😎
@@ -40,11 +40,13 @@
                     </button>
                 </div>
             </div>
-            <div style="text-align: center;" v-motion-slide-bottom>
-                <button @click="goHome" class="home-button">
-                    < Retour</button>
-            </div>
         </form>
+        <div style="text-align: center;" v-motion-slide-bottom>
+            <button @click="log" class="validate">VALIDER</button>
+            <br>
+            <button @click="goHome" class="home-button">
+                < Retour</button>
+        </div>
     </div>
 </template>
 
@@ -56,9 +58,11 @@ const router = useRouter();
 
 
 const userName = ref(localStorage.getItem('userName') || 'User');
-const greeting = 'FVEZS';
+const greeting = 'EUDYR';
 
-const caesarCipher = (text, shift = 4) => {
+const correct = "BRAVO" + userName.value.toUpperCase()
+
+const caesarCipher = (text, shift = 3) => {
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     return text
         .toUpperCase()
@@ -73,7 +77,7 @@ const caesarCipher = (text, shift = 4) => {
         .join('');
 };
 
-const cryptedUserName = ref(caesarCipher(userName.value, 4));
+const cryptedUserName = ref(caesarCipher(userName.value, 3));
 
 const inputs = ref(
     [...greeting.split(''), ...cryptedUserName.value.split('').map(letter => letter.toUpperCase())]
@@ -108,9 +112,45 @@ const changeLetter = (index, direction) => {
 const goHome = () => {
     router.push('/theoryEnigma1');
 };
+
+const log = () => {
+    if (inputs.value.join('') === correct) {
+        router.push('/success');
+
+    } else {
+        alert("Ce n'est pas tout à fait ça. Essayez encore !");
+    }
+};
 </script>
 
 <style scoped>
+.validate {
+    margin: 25px;
+    height: 60px;
+    text-align: center;
+    width: 170px;
+    border-radius: 15px;
+    border: 5px solid #007bff;
+    color: #007bff;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    font-size: 18px;
+    background-color: white;
+}
+
+.validate:hover {
+    background-color: #dfefff;
+    transform: scale(1.1);
+}
+
+.validate:active {
+    transform: translateY(0);
+}
+
+.validate:focus {
+    outline: none;
+}
+
 .container {
     display: flex;
     flex-direction: column;

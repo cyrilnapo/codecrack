@@ -11,6 +11,7 @@ import Enigma2 from '../views/Enigmas/Enigma2.vue';
 import Enigma3 from '../views/Enigmas/Enigma3.vue';
 import Enigma4 from '../views/Enigmas/Enigma4.vue';
 import Enigma5 from '../views/Enigmas/Enigma5.vue';
+import Success from '../views/Success.vue';
 
 const routes = [
   { path: '/', component: Home },
@@ -25,6 +26,7 @@ const routes = [
   { path: '/enigma3', component: Enigma3 },
   { path: '/enigma4', component: Enigma4 },
   { path: '/enigma5', component: Enigma5 },
+  { path: '/success', component: Success}
 ];
 
 const router = createRouter({

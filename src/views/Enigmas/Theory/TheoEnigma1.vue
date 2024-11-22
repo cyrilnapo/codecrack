@@ -5,14 +5,14 @@
             <p>
                 Chaque lettre est remplacée par une autre, située plus loin dans l’alphabet.<br>Par exemple, si on
                 utilise un
-                décalage de <span style="color:#007bff ; font-size: 35px">+3</span>, alors :
+                décalage de <span style="color:#007bff ; font-size: 35px">+2</span>, alors :
             </p>
         </div>
         <div v-motion-slide-right class="example">
             <p><strong>Message d'origine :</strong> ABC</p>
-            <p style="color:#007bff ; font-size: 35px"><strong>+3 ↓</strong> </p>
-            <p><strong>🔒 Message chiffré :</strong> DEF</p>
-            <p style="color:#007bff ; font-size: 35px"><strong>-3 ↓</strong> </p>
+            <p style="color:#007bff ; font-size: 35px"><strong>+2 ↓</strong> </p>
+            <p><strong>🔒 Message chiffré :</strong> CDE</p>
+            <p style="color:#007bff ; font-size: 35px"><strong>-2 ↓</strong> </p>
             <p><strong>Message original :</strong> ABC</p>
         </div>
         <div v-motion-slide-bottom>
