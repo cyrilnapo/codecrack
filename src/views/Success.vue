@@ -1,29 +1,34 @@
 <template>
     <div class="success-page">
-        <div class="container">
-            <div v-motion-slide-top>
-                <h1 class="title">🥳 Bravo ! 🎉</h1>
-            </div>
-            <div v-motion-pop>
-                <p class="message">Vous avez résolu l'énigme !🕵️‍♂️</p>
-            </div>
-            <div v-motion-slide-bottom>
-                <button @click="goToMenu" class="button">Continuer</button>
-            </div>
+      <div class="container">
+        <div v-motion-slide-top>
+          <h1 class="title">🥳 Bravo {{ username }}! 🎉</h1>
         </div>
+        <div v-motion-pop>
+          <p class="message">Vous avez résolu l'énigme !🕵️‍♂️</p>
+        </div>
+        <div v-motion-slide-bottom>
+          <button @click="goToMenu" class="button">Continuer</button>
+        </div>
+      </div>
     </div>
-</template>
-
-<script>
-export default {
+  </template>
+  
+  <script>
+  export default {
     name: 'Success',
+    computed: {
+      username() {
+        return localStorage.getItem('userName') || '';
+      },
+    },
     methods: {
-        goToMenu() {
-            this.$router.push('/menu');
-        }
-    }
-}
-</script>
+      goToMenu() {
+        this.$router.push('/menu');
+      },
+    },
+  };
+  </script>
 
 <style scoped>
 .success-page {
