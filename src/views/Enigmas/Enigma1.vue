@@ -3,7 +3,7 @@
         <div class="intro" v-motion-slide-top>
             <h1>🕵️‍♂️ Mission d'espionnage : Déchiffrez le message ! 🔐</h1>
             <p>
-                Un espion a laissé un message codé 📨. Déchiffrez-le en utilisant la clé 🔑 : <span
+                Un espion a laissé un message codé 📨. Il a utilisé la clé suivante 🔑 : <span
                     style="color:#007bff ; font-size: 35px">+3</span>.
             </p>
             <p>
@@ -152,6 +152,7 @@ const log = () => {
 }
 
 .container {
+    user-select: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
