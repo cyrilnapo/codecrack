@@ -6,11 +6,6 @@
 
 **CodeCrack** est une web app statique éducative conçue pour initier les jeunes aux bases de la cybersécurité à travers des énigmes interactives. L'objectif est d'offrir une expérience agréable et amusante tout en apprenant des concepts basiques dans un design simple et intuitif. Ce projet a été initiallement conçu pour les portes ouvertes 2024 de l'ETML.
 
-## 🚀 Fonctionnalités
-
-- **Énigmes ludiques** : Résolvez des énigmes sur des concepts fondamentaux de la cybersécurité.
-- **Design moderne** : Naviguez dans une interface utilisateur esthétique et fluide grâce à .
-- **Expérience interactive** : Profitez d'animations et d'une présentation immersive.
 
 ## 🛠️ Technologies utilisées
 
