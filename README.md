@@ -11,7 +11,7 @@
 
 - **Framework** : Vue.js (v3)
 - **Hébergement** : Azure Static Web Apps
-- **Animation package** : [@vueuse/motion](https://github.com/vueuse/motion)
+- **Package pour animations** : [@vueuse/motion](https://github.com/vueuse/motion)
 
 ## 📦 Installation locale
 
