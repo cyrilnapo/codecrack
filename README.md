@@ -2,7 +2,8 @@
 	<img src="https://github.com/user-attachments/assets/a13d0421-c54b-41ab-af5a-1131d090e191">
 </p>
 
-# 🎈
+# 🎈 ![workflow](https://github.com/cyrilnapo/codecrack/actions/workflows/azure-static-web-apps-lively-island-04535aa03.yml/badge.svg)
+
 
 **CodeCrack** est une web app statique éducative conçue pour initier les jeunes aux bases de la cybersécurité à travers des énigmes interactives. L'objectif est d'offrir une expérience agréable et amusante tout en apprenant des concepts basiques dans un design simple et intuitif. Ce projet a été initiallement conçu pour les portes ouvertes 2024 de l'ETML.
 
