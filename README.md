@@ -1,5 +1,7 @@
 <p align="center">
-	<img src="https://github.com/user-attachments/assets/a13d0421-c54b-41ab-af5a-1131d090e191">
+	
+![image](https://github.com/user-attachments/assets/b852534a-f65d-462f-8353-258f2dcaf3e8)
+	
 </p>
 
 # 🎈 ![workflow](https://github.com/cyrilnapo/codecrack/actions/workflows/azure-static-web-apps-lively-island-04535aa03.yml/badge.svg)
