@@ -42,7 +42,7 @@ export default {
         return {
             userName,
             motionGlowText,
-            defis: ['🧩 Énigme 1', '🔍 Énigme 2', '🧠 Énigme 3', '🕵️‍♂️ Énigme 4', '💡 Énigme 5'],
+            defis: ['🧩 Énigme 1', '🔍 Énigme 2', '🧠 Énigme 3'],
         };
     },
     methods: {
