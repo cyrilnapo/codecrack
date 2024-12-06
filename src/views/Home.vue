@@ -15,6 +15,8 @@ import { ref, onMounted } from 'vue';
 
 const router = useRouter();
 const userName = ref('');
+localStorage.setItem('userName', "");
+
 
 const motionGlowText = {
     initial: {
