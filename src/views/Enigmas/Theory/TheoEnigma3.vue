@@ -16,9 +16,9 @@
             </ul>
             <p>
                 <strong>Email suspect :</strong> <span style="color:#007bff ; font-size: 25px"><strong> → </strong></span>
-                <strong>support@labanquedebcv</strong><br>
+                <strong>support@labanquedebcv.bg</strong><br>
                 <strong>Email sécurisé :</strong> <span style="color:#007bff ; font-size: 25px"><strong> → </strong></span>
-                <strong>support@bcv</strong>
+                <strong>support@bcv.ch</strong>
             </p>
         </div>
         <div v-motion-slide-bottom>

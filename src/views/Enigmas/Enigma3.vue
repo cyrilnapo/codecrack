@@ -95,7 +95,7 @@ export default {
                         body: "Bonjour {userName}, nous avons détecté un email suspect lié à votre compte. Cliquez pour plus de détails."
                     },
                     B: {
-                        email: "transaction@bcv",
+                        email: "transaction@bcv.ch",
                         subject: "Vérification de votre compte bancaire",
                         body: "Bonjour {userName}, nous vous conseillons de vérifier les récentes transactions sur votre compte."
                     }
