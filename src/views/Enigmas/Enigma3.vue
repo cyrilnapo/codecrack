@@ -13,7 +13,7 @@
                     <p class="date">Il y a 5 minutes</p>
                 </div>
                 <p class="subject">{{ emails[currentStep].A.subject }}</p>
-                <p class="body">{{ emails[currentStep].A.body }}</p>
+                <p class="body">{{ emails[currentStep].A.body.replace("{userName}", userName) }}</p>
             </div>
             <div class="email" @click="checkEmail('B')">
                 <div class="header">
@@ -21,7 +21,7 @@
                     <p class="date">Il y a 10 minutes</p>
                 </div>
                 <p class="subject">{{ emails[currentStep].B.subject }}</p>
-                <p class="body">{{ emails[currentStep].B.body }}</p>
+                <p class="body">{{ emails[currentStep].B.body.replace("{userName}", userName) }}</p>
             </div>
         </div>
         <div v-motion-slide-bottom>
@@ -38,28 +38,68 @@ export default {
             currentStep: 0,
             transit: false,
             showError: false,
+            userName: localStorage.getItem('userName') || 'User',
             emails: [
-                { // Étape 1
-                    A: { email: "bank@labanquebcv.bg", subject: "MISE A JOUR URGENTE DE VOTRE COMPTE BANCAIRE !!", body: "Cliquez vite ici pour sécuriser votre compte avant qu'il ne soit verrouillé." },
-                    B: { email: "support@bcv.ch", subject: "Mise à jour de votre compte bancaire", body: "Votre compte a besoin d'une mise à jour. Veuillez cliquer pour plus d'infos." }
+                {
+                    A: {
+                        email: "bank@labanquebcv.bg",
+                        subject: "MISE A JOUR URGENTE DE VOTRE COMPTE BANCAIRE !!",
+                        body: "Bonjour {userName}, cliquez vite ici pour sécuriser votre compte avant qu'il ne soit verrouillé."
+                    },
+                    B: {
+                        email: "support@bcv.ch",
+                        subject: "Mise à jour de votre compte bancaire",
+                        body: "Bonjour {userName}, votre compte a besoin d'une mise à jour. Veuillez cliquer pour plus d'infos."
+                    }
                 },
-                { // Étape 2
-                    B: { email: "security@labanquebcv.ch.com", subject: "Action requise : votre compte a été compromis", body: "Vérifiez immédiatement votre activité pour protéger vos données." },
-                    A: { email: "help@bcv.ch", subject: "Réinitialisation de votre mot de passe", body: "Pour des raisons de sécurité, nous vous demandons de réinitialiser votre mot de passe." }
+                {
+                    B: {
+                        email: "security@labanquebcv.ch.com",
+                        subject: "Action requise : votre compte a été compromis",
+                        body: "Bonjour {userName}, vérifiez immédiatement votre activité pour protéger vos données."
+                    },
+                    A: {
+                        email: "help@bcv.ch",
+                        subject: "Réinitialisation de votre mot de passe",
+                        body: "Bonjour {userName}, pour des raisons de sécurité, nous vous demandons de réinitialiser votre mot de passe."
+                    }
                 },
-                { // Étape 3
-                    B: { email: "update@labanquebcv.com", subject: "Mise à jour de sécurité nécessaire", body: "Cliquez ici pour installer les dernières mises à jour sur votre compte." },
-                    A: { email: "account@bcv.ch", subject: "Rappel : vérifiez votre sécurité", body: "Pour garder votre compte sécurisé, vérifiez votre activité de manière régulière." }
+                {
+                    B: {
+                        email: "update@labanquebcv.com",
+                        subject: "Mise à jour de sécurité nécessaire",
+                        body: "Bonjour {userName}, cliquez ici pour installer les dernières mises à jour sur votre compte."
+                    },
+                    A: {
+                        email: "account@bcv.ch",
+                        subject: "Rappel : vérifiez votre sécurité",
+                        body: "Bonjour {userName}, pour garder votre compte sécurisé, vérifiez votre activité de manière régulière."
+                    }
                 },
-                { // Étape 4
-                    B: { email: "alerteOfficiel@labanquebcv.com", subject: "Vérification de votre compte : Urgent !", body: "Nous avons remarqué une activité inhabituelle. Cliquez pour résoudre cette situation." },
-                    A: { email: "notifications@bcv.ch", subject: "Confirmation de sécurité de compte", body: "Votre compte semble sécurisé, mais nous vous conseillons de vérifier les dernières connexions." }
+                {
+                    B: {
+                        email: "alerteOfficiel@labanquebcv.com",
+                        subject: "Vérification de votre compte : Urgent !",
+                        body: "Bonjour {userName}, nous avons remarqué une activité inhabituelle. Cliquez pour résoudre cette situation."
+                    },
+                    A: {
+                        email: "notifications@bcv.ch",
+                        subject: "Confirmation de sécurité de compte",
+                        body: "Bonjour {userName}, votre compte semble sécurisé, mais nous vous conseillons de vérifier les dernières connexions."
+                    }
                 },
-                { // Étape 5
-                    A: { email: "bcv@labanquebcv.com", subject: "Suspicion de phishing sur votre compte", body: "Nous avons détecté un email suspect lié à votre compte. Cliquez pour plus de détails." },
-                    B: { email: "transaction@bcv", subject: "Vérification de votre compte bancaire", body: "Nous vous conseillons de vérifier les récentes transactions sur votre compte." }
-                },
-
+                {
+                    A: {
+                        email: "bcv@labanquebcv.com",
+                        subject: "Suspicion de phishing sur votre compte",
+                        body: "Bonjour {userName}, nous avons détecté un email suspect lié à votre compte. Cliquez pour plus de détails."
+                    },
+                    B: {
+                        email: "transaction@bcv",
+                        subject: "Vérification de votre compte bancaire",
+                        body: "Bonjour {userName}, nous vous conseillons de vérifier les récentes transactions sur votre compte."
+                    }
+                }
             ]
         };
     },
@@ -158,9 +198,11 @@ p {
     background-color: #e2e2e2;
     transform: scale(1.02);
 }
+
 .email:active {
     transform: scale(0.90);
 }
+
 .email p {
     margin: 5px 0;
 }
